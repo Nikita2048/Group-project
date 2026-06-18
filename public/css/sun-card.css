@@ -1,0 +1,106 @@
+.sun-hero-card {
+  max-width: var(--container-max); margin: 0 auto 3rem;
+  background: linear-gradient(135deg, #1B1D27 0%, #2A1F0A 100%);
+  border: 2px solid #FFD740; border-radius: 24px; padding: 3rem 2.5rem;
+  position: relative; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(255, 215, 0, 0.15), inset 0 0 80px rgba(255, 215, 0, 0.05);
+}
+
+.sun-hero-visual {
+  width: 180px; height: 180px; margin: 0 auto 2rem; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff8e1 0%, #FFD740 30%, #FF6D00 65%, #BF360C 100%);
+  box-shadow: 0 0 60px rgba(255, 215, 0, 0.6), 0 0 100px rgba(255, 109, 0, 0.4), inset 0 0 40px rgba(255, 255, 255, 0.2);
+  animation: sunHeroPulse 4s ease-in-out infinite;
+}
+
+@keyframes sunHeroPulse {
+  0%, 100% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.6), 0 0 100px rgba(255, 109, 0, 0.4), inset 0 0 40px rgba(255, 255, 255, 0.2); transform: scale(1); }
+  50% { box-shadow: 0 0 80px rgba(255, 215, 0, 0.8), 0 0 140px rgba(255, 109, 0, 0.6), inset 0 0 50px rgba(255, 255, 255, 0.3); transform: scale(1.03); }
+}
+
+.sun-hero-content { text-align: center; }
+
+.sun-badge {
+  display: inline-block; padding: 0.4rem 1rem;
+  background: rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 20px; color: #FFD740;
+  font-family: 'Orbitron', monospace; font-size: 0.7rem;
+  letter-spacing: 3px; font-weight: 700; margin-bottom: 1rem;
+}
+
+.sun-hero-title {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900; letter-spacing: 8px;
+  background: linear-gradient(135deg, #fff8e1 0%, #FFD740 50%, #FF6D00 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 1.5rem;
+}
+
+.sun-hero-desc {
+  font-size: 1.05rem; color: var(--text-main);
+  line-height: 1.7; max-width: 800px; margin: 0 auto 2.5rem;
+}
+
+.sun-hero-stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem; margin-bottom: 2.5rem;
+}
+
+.sun-stat-item {
+  background: rgba(27, 29, 39, 0.6);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-left: 3px solid #FFD740;
+  border-radius: 10px; padding: 1rem 1.2rem; text-align: left;
+  transition: all 0.3s;
+}
+
+.sun-stat-item:hover {
+  background: rgba(27, 29, 39, 0.8);
+  transform: translateX(4px);
+}
+
+.sun-stat-label {
+  font-family: 'Orbitron', monospace; font-size: 0.7rem;
+  letter-spacing: 2px; color: var(--text-dim);
+  text-transform: uppercase; margin-bottom: 0.3rem; font-weight: 600;
+}
+
+.sun-stat-value {
+  font-family: 'Orbitron', monospace; font-size: 0.95rem;
+  color: #FFD740; font-weight: 700;
+}
+
+.sun-hero-actions {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+}
+
+.sun-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.9rem 2rem; border: none; border-radius: 8px;
+  cursor: pointer; font-family: 'Orbitron', monospace;
+  font-size: 0.78rem; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 700;
+  transition: all 0.3s; text-decoration: none;
+}
+
+.sun-btn.primary {
+  background: linear-gradient(135deg, #FFD740, #FF6D00);
+  color: #1B1D27; box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+}
+
+.sun-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
+}
+
+.sun-btn.secondary {
+  background: transparent; border: 2px solid rgba(255, 215, 0, 0.4);
+  color: #FFD740;
+}
+
+.sun-btn.secondary:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: #FFD740; transform: translateY(-3px);
+}

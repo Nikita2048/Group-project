@@ -1,0 +1,78 @@
+#sat-section {
+  background: radial-gradient(ellipse at center, #262A38 0%, #1B1D27 80%);
+}
+
+#sat-canvas-wrap { 
+  position: relative; width: 100%; max-width: 1400px;
+  margin: 0 auto 2rem; overflow: visible !important;
+  background: transparent !important;
+  display: flex; justify-content: center; align-items: center;
+}
+
+canvas#satCanvas { 
+  display: block; margin: 0 auto; max-width: 100%;
+  height: auto !important; cursor: pointer;
+  background: transparent !important; border: none !important;
+}
+
+.sat-info-panel {
+  background: rgba(42,45,58,.8); border-radius: 12px;
+  padding: 1.5rem 2rem; max-width: 900px; margin: 0 auto;
+  backdrop-filter: blur(8px); min-height: 120px;
+  border: 1px solid rgba(110,127,163,.2);
+}
+
+.sat-info-panel h3 { 
+  font-family: 'Orbitron', monospace; color: var(--accent-blue); 
+  margin-bottom: .5rem; font-size: 1.2rem; 
+}
+
+.sat-info-panel p { color: var(--text-dim); line-height: 1.7; }
+
+.sat-grid { 
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); 
+  gap: 1.5rem; max-width: var(--container-max); margin: 0 auto; 
+}
+
+.sat-card { 
+  background: var(--space-card); 
+  border:1px solid rgba(110,127,163,.25); 
+  border-radius:16px; padding: var(--pad-card); 
+  transition: all .3s; position: relative; overflow: hidden;
+}
+
+.sat-card:hover { 
+  transform: translateY(-6px); border-color: var(--accent-blue); 
+  box-shadow:0 12px 40px rgba(110,127,163,.25); 
+}
+
+.sat-card .sat-visual {
+  width: 100%; height: 0; overflow: hidden;
+  border-radius: 12px; background: var(--space-deep);
+  transition: height .4s, margin-bottom .4s;
+  display: flex; align-items: center; justify-content: center; margin-bottom: 0;
+}
+
+.sat-card:hover .sat-visual { height: 150px; margin-bottom: 1rem; }
+
+.sat-card .sat-visual img { width: 100%; height: 150px; object-fit: contain; }
+
+.sat-card h3 { 
+  font-family:'Orbitron',monospace; font-size:1rem; 
+  margin-bottom:.4rem; letter-spacing:1px; color: var(--accent-blue); 
+}
+
+.sat-card .sat-owner { 
+  font-size:.75rem; color: var(--text-dim); text-transform:uppercase; 
+  letter-spacing:1px; margin-bottom:.8rem; display:inline-block; 
+  background: rgba(110,127,163,.12); padding:.2rem .6rem; border-radius:20px; 
+}
+
+.sat-card p { color: var(--text-dim); line-height:1.65; font-size:.92rem; }
+
+.sat-card .sat-stat { 
+  display:flex; justify-content:space-between; margin-top:.6rem; 
+  padding-top:.6rem; border-top:1px solid rgba(255,255,255,.06); font-size:.82rem; 
+}
+
+.sat-card .sat-stat strong { color: var(--accent-blue); }

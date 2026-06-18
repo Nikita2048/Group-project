@@ -1,0 +1,25 @@
+/* ═══════════════════════════════════════════════════
+   COSMOS — Главный файл стилей
+   ═══════════════════════════════════════════════════ */
+
+@import url('css/base.css');
+@import url('css/layout.css');
+@import url('css/mobile-menu.css');
+@import url('css/components.css');
+@import url('css/buttons.css');
+@import url('css/hero.css');
+@import url('css/sun-card.css');
+@import url('css/planets.css');
+@import url('css/blackholes.css');
+@import url('css/satellites.css');
+@import url('css/galaxies.css');
+@import url('css/map.css');
+@import url('css/size-comparison.css');
+@import url('css/calculator.css');
+@import url('css/quiz.css');
+@import url('css/facts.css');
+@import url('css/games.css');
+@import url('css/3d.css');
+@import url('css/tabs.css');
+@import url('css/scrollbar.css');
+@import url('css/responsive.css');

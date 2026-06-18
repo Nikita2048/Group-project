@@ -1,0 +1,158 @@
+#galaxies { background: var(--space-deep); }
+
+.galaxies-stats {
+  display: flex; justify-content: center; gap: 2rem;
+  flex-wrap: wrap; margin-bottom: 2.5rem; padding: 1.5rem;
+  background: rgba(42,45,58,.4); border-radius: 12px;
+  max-width: var(--container-max);
+  margin-left: auto; margin-right: auto;
+  border: 1px solid rgba(229,172,82,.12);
+}
+
+.galaxy-stat { text-align: center; }
+
+.galaxy-stat-value {
+  font-family: 'Orbitron', monospace; font-size: 1.8rem;
+  font-weight: 900; color: var(--accent-gold); letter-spacing: 2px;
+}
+
+.galaxy-stat-label {
+  font-size: 0.75rem; color: var(--text-dim);
+  letter-spacing: 2px; text-transform: uppercase; margin-top: 0.3rem;
+}
+
+.galaxies-filters {
+  display: flex; flex-wrap: wrap; gap: 0.8rem;
+  justify-content: center; margin-bottom: 1rem;
+  max-width: var(--container-max);
+  margin-left: auto; margin-right: auto;
+}
+
+.filter-chip {
+  background: transparent; border: 1px solid rgba(229,172,82,.2);
+  color: var(--text-dim); padding: 0.5rem 1.2rem;
+  border-radius: 30px; cursor: pointer;
+  font-family: 'Orbitron', monospace; font-size: 0.7rem;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  transition: all .25s; font-weight: 600;
+}
+
+.filter-chip:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+.filter-chip.active { background: var(--accent-gold); color: var(--space-deep); }
+
+.galaxies-search-wrap {
+  position: relative !important; display: flex;
+  justify-content: center; margin-bottom: 2.5rem;
+  max-width: 500px; margin-left: auto; margin-right: auto;
+}
+
+.galaxies-search {
+  flex: 1; background: var(--space-card);
+  border: 1px solid rgba(229,172,82,.2); color: var(--text-main);
+  padding: 0.7rem 1.2rem; font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem; border-radius: 30px 0 0 30px; outline: none;
+}
+
+.galaxies-search:focus { border-color: var(--accent-gold); }
+
+.galaxies-search-btn {
+  background: var(--accent-gold); border: 1px solid var(--accent-gold);
+  color: var(--space-deep); padding: 0.7rem 1.2rem;
+  cursor: pointer; border-radius: 0 30px 30px 0;
+  font-family: 'Orbitron', monospace; font-size: 0.75rem;
+  letter-spacing: 2px; font-weight: 700;
+}
+
+#galaxiesSuggestions {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--space-card); border: 1px solid var(--accent-gold);
+  border-radius: 0 0 12px 12px; max-height: 350px;
+  overflow-y: auto; z-index: 100; display: none;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.suggestion-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; cursor: pointer;
+  border-bottom: 1px solid rgba(229,172,82,0.1);
+}
+
+.suggestion-item:hover { background: rgba(229,172,82,0.15); }
+.suggestion-item.no-results { color: var(--text-dim); justify-content: center; }
+.suggestion-emoji { font-size: 1.4rem; width: 28px; text-align: center; }
+.suggestion-name { 
+  font-family: 'Orbitron', monospace; font-size: 0.9rem;
+  color: var(--text-main); font-weight: 600; 
+}
+
+.suggestion-name mark { background: rgba(229,172,82,0.4); color: var(--accent-gold); }
+
+.suggestion-type { font-size: 0.75rem; color: var(--text-dim); }
+
+.galaxies-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.5rem; max-width: var(--container-max); margin: 0 auto;
+}
+
+.galaxy-card {
+  background: var(--space-card); border: 1px solid rgba(229,172,82,.12);
+  border-radius: 16px; padding: var(--pad-card);
+  cursor: pointer; transition: all .35s; position: relative; overflow: hidden;
+}
+
+.galaxy-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, var(--card-glow, transparent) 0%, transparent 60%);
+  opacity: 0.3; pointer-events: none;
+}
+
+.galaxy-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--card-color, var(--accent-gold));
+  box-shadow: 0 12px 40px var(--card-glow, transparent);
+}
+
+.galaxy-card-visual {
+  width: 100%; height: 130px; border-radius: 12px;
+  background: radial-gradient(circle at center, var(--card-color, var(--accent-gold)) 0%, var(--space-deep) 70%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem; margin-bottom: 1rem; position: relative; overflow: hidden;
+}
+
+.galaxy-card h3 {
+  font-family: 'Orbitron', monospace; font-size: 1rem;
+  margin-bottom: 0.4rem; letter-spacing: 1.5px; color: var(--text-main);
+}
+
+.galaxy-card .galaxy-type {
+  display: inline-block; font-size: 0.7rem;
+  padding: 0.25rem 0.7rem; border-radius: 20px;
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 0.8rem; font-weight: 600;
+}
+
+.galaxy-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
+
+.galaxy-card-stats {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0.5rem; padding-top: 0.8rem;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.galaxy-stat-row { display: flex; flex-direction: column; gap: 2px; }
+
+.galaxy-stat-row .label {
+  font-size: 0.65rem; color: var(--text-dim);
+  letter-spacing: 1px; text-transform: uppercase;
+  font-family: 'Orbitron', monospace;
+}
+
+.galaxy-stat-row .value {
+  font-size: 0.82rem; color: var(--accent-gold);
+  font-weight: 600; font-family: 'Orbitron', monospace;
+}
+
+.no-galaxies {
+  grid-column: 1 / -1; text-align: center;
+  padding: 3rem; color: var(--text-dim);
+}

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Игры — COSMOS</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stars-bg"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">★ COSMOS</a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-page="index">Главная</a></li>
+    <li><a href="planets.html" data-page="planets">Планеты</a></li>
+    <li><a href="blackholes.html" data-page="blackholes">Чёрные дыры</a></li>
+    <li><a href="satellites.html" data-page="satellites">Спутники</a></li>
+    <li><a href="galaxies.html" data-page="galaxies">Галактики</a></li>
+    <li><a href="planets3d.html" data-page="planets3d">3D Модели</a></li>
+    <li><a href="games.html" data-page="games">Игры</a></li>
+    <li><a href="facts.html" data-page="facts">Факты</a></li>
+    <li><button class="nav-fact-btn" id="navFactBtn" type="button" title="Случайный факт"> ФАКТ</button></li>
+  </ul>
+</nav>
+
+<button class="burger-menu" id="burgerMenu" type="button" aria-label="Меню">
+  <span class="burger-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+</button>
+
+<div class="nav-overlay" id="navOverlay"></div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <a href="index.html" class="mobile-nav-logo">★ COSMOS</a>
+    <button class="mobile-menu-close" id="mobileMenuClose" type="button" aria-label="Закрыть">×</button>
+  </div>
+  
+  <div class="mobile-menu-content">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" data-page="index">Главная</a></li>
+      <li><a href="planets.html" data-page="planets">Планеты</a></li>
+      <li><a href="blackholes.html" data-page="blackholes">Чёрные дыры</a></li>
+      <li><a href="satellites.html" data-page="satellites">Спутники</a></li>
+      <li><a href="galaxies.html" data-page="galaxies">Галактики</a></li>
+      <li><a href="planets3d.html" data-page="planets3d">3D Модели</a></li>
+      <li><a href="games.html" data-page="games">Игры</a></li>
+      <li><a href="facts.html" data-page="facts">Факты</a></li>
+    </ul>
+  </div>
+  
+  <div class="mobile-menu-footer">
+    <button class="mobile-fact-btn" id="mobileFactBtn" type="button">ФАКТ</button>
+  </div>
+</div>
+
+
+<div class="page-hero">
+  <div class="section-label">Мини-игры</div>
+  <h1 class="section-title">КОСМИЧЕСКИЕ ИГРЫ</h1>
+  <p class="section-desc">Шесть игр: проверь знания, реакцию, память и собери космический тетрис!</p>
+</div>
+
+
+<section id="games">
+  <div class="games-grid games-grid-extended">
+
+    <div class="game-card">
+      <div class="game-header">
+        <h3>Космический Квиз</h3>
+        <p>Проверь знания о космосе — 12 вопросов</p>
+      </div>
+      <div class="game-area">
+        <div class="quiz-score" id="quizScore">Очки: 0 / 0</div>
+        <div class="quiz-question" id="quizQ">Загрузка...</div>
+        <div class="quiz-options" id="quizOpts"></div>
+        <div class="quiz-feedback" id="quizFb"></div>
+        <button class="btn-next" id="btnNext" style="display:none">СЛЕДУЮЩИЙ →</button>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <div class="game-header">
+        <h3>Уклонение от астероидов</h3>
+        <p>Управляй кораблём мышью — не врезайся!</p>
+      </div>
+      <div class="game-area">
+        <div class="game-hud">
+          <div><div class="hud-val" id="dodgeScore">0</div><div class="hud-label">СЧЁТ</div></div>
+          <button class="btn-game" id="btnDodge">СТАРТ</button>
+          <div><div class="hud-val" id="dodgeLives">♥♥♥</div><div class="hud-label">ЖИЗНИ</div></div>
+        </div>
+        <canvas id="dodgeCanvas" width="288" height="220"></canvas>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <div class="game-header">
+        <h3>Космическая память</h3>
+        <p>Найди все пары эмодзи космоса</p>
+      </div>
+      <div class="game-area">
+        <div class="mem-stats">
+          <span>Ходов: <strong id="memMoves">0</strong></span>
+          <span>Пар: <strong id="memPairs">0</strong>/8</span>
+          <button class="btn-game" id="btnMem" style="margin-left:auto">СБРОС</button>
+        </div>
+        <br>
+        <div class="memory-grid" id="memGrid"></div>
+      </div>
+    </div>
+
+    <div class="game-card game-card-tall">
+      <div class="game-header">
+        <h3>Космический Тетрис</h3>
+        <p>Собирай линии из падающих фигур</p>
+      </div>
+      <div class="game-area tetris-area">
+        <div class="tetris-hud">
+          <div class="tetris-stat">
+            <div class="tetris-stat-label">СЧЁТ</div>
+            <div class="tetris-stat-val" id="tetrisScore">0</div>
+          </div>
+          <div class="tetris-stat">
+            <div class="tetris-stat-label">УРОВЕНЬ</div>
+            <div class="tetris-stat-val" id="tetrisLevel">1</div>
+          </div>
+          <div class="tetris-stat">
+            <div class="tetris-stat-label">ЛИНИИ</div>
+            <div class="tetris-stat-val" id="tetrisLines">0</div>
+          </div>
+          <button class="btn-game" id="btnTetris">СТАРТ</button>
+        </div>
+        <div class="tetris-board-wrap">
+          <canvas id="tetrisCanvas" width="200" height="400"></canvas>
+          <div class="tetris-next">
+            <div class="tetris-next-label">СЛЕДУЮЩАЯ:</div>
+            <canvas id="tetrisNextCanvas" width="100" height="100"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <div class="game-header">
+        <h3>Космическая Змейка</h3>
+        <p>Собирай звёзды, не врезайся в стены и в себя</p>
+      </div>
+      <div class="game-area">
+        <div class="game-hud">
+          <div><div class="hud-val" id="snakeScore">0</div><div class="hud-label">СЧЁТ</div></div>
+          <button class="btn-game" id="btnSnake">СТАРТ</button>
+          <div><div class="hud-val" id="snakeBest">0</div><div class="hud-label">РЕКОРД</div></div>
+        </div>
+        <canvas id="snakeCanvas" width="288" height="288"></canvas>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <div class="game-header">
+        <h3>Кликер Планет</h3>
+        <p>Кликай по планетам и собирай космическую энергию</p>
+      </div>
+      <div class="game-area clicker-area">
+        <div class="clicker-stats">
+          <div class="clicker-stat">
+            <span>⚡ Энергия:</span>
+            <strong id="clickerEnergy">0</strong>
+          </div>
+          <div class="clicker-stat">
+            <span>⚡ За клик:</span>
+            <strong id="clickerPerClick">1</strong>
+          </div>
+          <div class="clicker-stat">
+            <span>⚡ Скорость:</span>
+            <strong id="clickerAuto">0/сек</strong>
+          </div>
+        </div>
+        <div class="clicker-target" id="clickerTarget">⊕</div>
+        <div class="clicker-shop">
+          <button class="clicker-upgrade" data-upgrade="click">
+            <span>Улучшить клик</span>
+            <span class="upgrade-cost">⚡ 10</span>
+          </button>
+          <button class="clicker-upgrade" data-upgrade="auto">
+            <span>Авто-кликер</span>
+            <span class="upgrade-cost">⚡ 50</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-card">
+      <div class="game-header">
+        <h3>Космос 2048</h3>
+        <p>Соединяй одинаковые планеты</p>
+      </div>
+      <div class="game-area">
+        <div class="game-2048-hud">
+          <div>
+            <div class="hud-label">СЧЁТ</div>
+            <div class="hud-val" id="game2048Score">0</div>
+          </div>
+          <button class="btn-game" id="btn2048Start">СТАРТ</button>
+        </div>
+        <div class="game-2048-board" id="game2048Board"></div>
+      </div>
+    </div>
+
+  </section>
+
+
+<footer>
+  <p>★ COSMOS &nbsp;|&nbsp; <a href="index.html">На главную</a> &nbsp;|&nbsp; <a href="facts.html">Факты →</a></p>
+</footer>
+
+<button class="scroll-top" id="scrollTop" title="Наверх">↑</button>
+
+<div class="modal" id="planetModal">
+  <div class="modal-content">
+    <button class="modal-close" type="button">×</button>
+    <img id="modalImage" src="" alt="">
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+    <p class="modal-fact" id="modalFact"></p>
+    <div class="modal-stats" id="modalStats"></div>
+  </div>
+</div>
+
+
+<script src="js/api.js"></script>
+<script src="js/games.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+.btn-game, .pause-btn, .btn-next {
+  position: relative; font-weight: 800 !important;
+  letter-spacing: 2px; text-transform: uppercase;
+  transition: all 0.25s ease !important; overflow: hidden;
+}
+
+.btn-game {
+  background: linear-gradient(135deg, #FFD740 0%, #FF6D00 50%, #FF3D00 100%) !important;
+  border: 2px solid #FFD740 !important; color: #1B1D27 !important;
+  padding: 0.8rem 1.4rem !important; font-size: 0.85rem !important;
+  box-shadow: 0 0 20px rgba(255, 215, 64, 0.6), 0 0 40px rgba(255, 109, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  animation: btnStartPulse 2s ease-in-out infinite;
+}
+
+.btn-game:hover {
+  background: linear-gradient(135deg, #FFE082 0%, #FF8F00 50%, #DD2C00 100%) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: 0 0 30px rgba(255, 215, 64, 0.9), 0 0 60px rgba(255, 109, 0, 0.6);
+  animation: none;
+}
+
+@keyframes btnStartPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 64, 0.6), 0 0 40px rgba(255, 109, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
+  50% { box-shadow: 0 0 30px rgba(255, 215, 64, 0.9), 0 0 60px rgba(255, 109, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
+}
+
+.pause-btn {
+  background: linear-gradient(135deg, #4FC3F7 0%, #29B6F6 50%, #0288D1 100%) !important;
+  border: 2px solid #4FC3F7 !important; color: #1B1D27 !important;
+  padding: 0.8rem 1.4rem !important; font-size: 0.8rem !important;
+  box-shadow: 0 0 20px rgba(79, 195, 247, 0.6), 0 0 40px rgba(2, 136, 209, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.pause-btn:hover {
+  background: linear-gradient(135deg, #81D4FA 0%, #4FC3F7 50%, #0277BD 100%) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+}
+
+.pause-btn[style*="border-color:var(--accent-blue)"] {
+  background: linear-gradient(135deg, #EF5350 0%, #E53935 50%, #C62828 100%) !important;
+  border-color: #EF5350 !important; color: #fff !important;
+}
+
+.btn-next {
+  background: linear-gradient(135deg, #BA68C8 0%, #9C27B0 50%, #6A1B9A 100%) !important;
+  border: 2px solid #BA68C8 !important; color: #fff !important;
+  padding: 0.7rem 1.4rem !important;
+  box-shadow: 0 0 20px rgba(186, 104, 200, 0.6), 0 0 40px rgba(106, 27, 154, 0.4);
+}
+
+.btn-next:hover {
+  background: linear-gradient(135deg, #CE93D8 0%, #BA68C8 50%, #4A148C 100%) !important;
+  transform: translateY(-2px) scale(1.05) !important;
+}
+
+.random-fact-btn.primary {
+  background: linear-gradient(135deg, #FFD740 0%, #FF6D00 50%, #FF3D00 100%) !important;
+  border: 2px solid #FFD740 !important; color: #1B1D27 !important;
+  font-weight: 800 !important;
+  animation: btnStartPulse 2s ease-in-out infinite;
+}
+
+.clicker-upgrade {
+  background: linear-gradient(135deg, rgba(255, 215, 64, 0.15), rgba(255, 109, 0, 0.1)) !important;
+  border: 2px solid #FFD740 !important; color: #FFD740 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 15px rgba(255, 215, 64, 0.3);
+}
+
+.clicker-upgrade:hover {
+  background: linear-gradient(135deg, rgba(255, 215, 64, 0.3), rgba(255, 109, 0, 0.2)) !important;
+  transform: translateY(-2px) !important;
+}
+
+@media screen and (max-width: 768px) {
+  .btn-game, .pause-btn { padding: 0.6rem 1rem !important; font-size: 0.7rem !important; }
+  .btn-next { padding: 0.55rem 1rem !important; font-size: 0.7rem !important; }
+}

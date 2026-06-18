@@ -1,0 +1,6 @@
+ADMIN_PASSWORD = 'cosmos2024'
+ADMIN_TOKEN = None
+DATABASE = 'cosmos.db'
+HOST = '0.0.0.0'
+PORT = 5000
+DEBUG = True

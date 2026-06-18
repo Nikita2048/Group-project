@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Факты и Калькулятор — COSMOS</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stars-bg"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">★ COSMOS</a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-page="index">Главная</a></li>
+    <li><a href="planets.html" data-page="planets">Планеты</a></li>
+    <li><a href="blackholes.html" data-page="blackholes">Чёрные дыры</a></li>
+    <li><a href="satellites.html" data-page="satellites">Спутники</a></li>
+    <li><a href="galaxies.html" data-page="galaxies">Галактики</a></li>
+    <li><a href="planets3d.html" data-page="planets3d">3D Модели</a></li>
+    <li><a href="games.html" data-page="games">Игры</a></li>
+    <li><a href="facts.html" data-page="facts">Факты</a></li>
+    <li><button class="nav-fact-btn" id="navFactBtn" type="button" title="Случайный факт">ФАКТ</button></li>
+  </ul>
+</nav>
+
+<button class="burger-menu" id="burgerMenu" type="button" aria-label="Меню">
+  <span class="burger-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+</button>
+
+<div class="nav-overlay" id="navOverlay"></div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <a href="index.html" class="mobile-nav-logo">★ COSMOS</a>
+    <button class="mobile-menu-close" id="mobileMenuClose" type="button" aria-label="Закрыть">×</button>
+  </div>
+  
+  <div class="mobile-menu-content">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" data-page="index">Главная</a></li>
+      <li><a href="planets.html" data-page="planets">Планеты</a></li>
+      <li><a href="blackholes.html" data-page="blackholes">Чёрные дыры</a></li>
+      <li><a href="satellites.html" data-page="satellites">Спутники</a></li>
+      <li><a href="galaxies.html" data-page="galaxies">Галактики</a></li>
+      <li><a href="planets3d.html" data-page="planets3d">3D Модели</a></li>
+      <li><a href="games.html" data-page="games">Игры</a></li>
+      <li><a href="facts.html" data-page="facts">Факты</a></li>
+    </ul>
+  </div>
+  
+  <div class="mobile-menu-footer">
+    <button class="mobile-fact-btn" id="mobileFactBtn" type="button">ФАКТ</button>
+  </div>
+</div>
+
+
+<div class="page-hero">
+  <div class="section-label">Удивительное рядом</div>
+  <h1 class="section-title">ФАКТЫ О КОСМОСЕ</h1>
+  <p class="section-desc">Вселенная полна сюрпризов, которые бросают вызов воображению.</p>
+</div>
+
+
+<section id="facts">
+  <div class="facts-grid" id="factsGrid"></div>
+</section>
+
+<section class="calculator-section">
+  <div class="center">
+    <div class="section-label">Интерактивный инструмент</div>
+    <h2 class="section-title">Калькулятор веса</h2>
+    <p class="section-desc">Узнайте, сколько бы вы весили на разных планетах Солнечной системы и на Солнце!</p>
+  </div>
+  <div class="calc-wrap">
+    <div class="calc-input-row">
+      <label>ВАШ ВЕС НА ЗЕМЛЕ (КГ)</label>
+      <input type="number" id="weightInput" value="70" min="1" max="1000">
+    </div>
+    <div class="calc-results" id="calcResults"></div>
+  </div>
+</section>
+
+<footer>
+  <p>★ COSMOS &nbsp;|&nbsp; <a href="index.html">На главную</a> &nbsp;|&nbsp; <a href="games.html">← Игры</a> &nbsp;|&nbsp; <a href="planets.html">Планеты →</a></p>
+</footer>
+
+<button class="scroll-top" id="scrollTop" title="Наверх">↑</button>
+
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

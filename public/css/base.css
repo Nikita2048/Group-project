@@ -1,0 +1,67 @@
+/* ═══════════════════════════════════════════════════
+   БАЗОВЫЕ СТИЛИ: переменные, сброс, типография
+   ═══════════════════════════════════════════════════ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --space-deep: #1B1D27;
+  --space-mid: #262A38;
+  --space-card: #2A2D3A;
+  --accent-gold: #E5AC52;
+  --accent-purple: #6E5A78;
+  --accent-mauve: #544757;
+  --accent-blue: #6E7FA3;
+  --accent-sand: #DEC18C;
+  --text-main: #F1EDE4;
+  --text-dim: #A9A6B8;
+  --glow-gold: rgba(229, 172, 82, 0.4);
+  --glow-purple: rgba(110, 90, 120, 0.45);
+  --glow-blue: rgba(110, 127, 163, 0.4);
+  --danger: #EF5350;
+  --success: #DEC18C;
+
+  --gap-xs: 0.5rem;
+  --gap-sm: 1rem;
+  --gap-md: 1.5rem;
+  --gap-lg: 2rem;
+  --gap-xl: 3rem;
+  --gap-2xl: 4rem;
+  --gap-3xl: 6rem;
+  
+  --pad-section: 6rem;
+  --pad-section-mob: 4rem;
+  --pad-card: 1.8rem;
+  --pad-card-mob: 1.2rem;
+  
+  --container-max: 1200px;
+  --container-padding: 2rem;
+  --container-padding-mob: 1rem;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--space-deep);
+  color: var(--text-main);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Звёзды на фоне */
+#stars-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 20% 50%, #262A38 0%, #1B1D27 70%);
+}
+
+.star { 
+  position: absolute; border-radius: 50%; background: #fff; 
+  animation: twinkle var(--d, 3s) ease-in-out infinite; 
+}
+
+@keyframes twinkle { 
+  0%,100%{opacity:.2;transform:scale(1)} 
+  50%{opacity:1;transform:scale(1.3)} 
+}

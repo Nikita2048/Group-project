@@ -1,0 +1,126 @@
+.modal {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(10, 10, 20, 0.85);
+  backdrop-filter: blur(8px);
+  display: none; align-items: center; justify-content: center;
+  padding: 1.5rem; animation: fadeIn .3s;
+}
+
+.modal.open { display: flex; }
+.modal.align-top { align-items: flex-start; padding-top: 8vh; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.modal-content {
+  background: var(--space-card);
+  border: 1px solid var(--accent-gold);
+  border-radius: 20px; max-width: 700px; width: 100%;
+  max-height: 90vh; overflow-y: auto;
+  position: relative; animation: slideUp .4s;
+}
+
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: rgba(27,29,39,.95); border: 1px solid var(--text-dim);
+  color: var(--text-dim); width: 36px; height: 36px;
+  border-radius: 50%; cursor: pointer; font-size: 1.2rem;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.modal-close:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+
+.modal-content img { 
+  width: 100%; height: 280px; object-fit: contain; padding: 1rem;
+  background: var(--space-deep); border-radius: 20px 20px 0 0; display: block;
+}
+
+.modal-content h2 { 
+  font-family: 'Orbitron', monospace; color: var(--accent-gold); 
+  padding: 1.5rem 2rem .5rem; font-size: 1.5rem; 
+}
+
+.modal-content > p { padding: 0 2rem 1rem; color: var(--text-dim); line-height: 1.7; }
+
+.modal-content .modal-fact { 
+  padding: 0 2rem 1rem; color: var(--text-dim); font-size: .9rem; 
+  border-bottom: 1px solid rgba(255,255,255,.06); line-height: 1.7;
+}
+
+.modal-stats { 
+  padding: 1rem 2rem 2rem; display: grid;
+  grid-template-columns: 1fr 1fr; gap: 0.5rem 1rem;
+}
+
+.modal-stat { 
+  display: flex; flex-direction: column; padding: 0.7rem 1rem;
+  background: rgba(27,29,39,.4); border-radius: 8px;
+  border-left: 2px solid var(--accent-gold);
+}
+
+.modal-stat span { 
+  color: var(--text-dim); font-size: .75rem; 
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.2rem;
+}
+
+.modal-stat strong { 
+  color: var(--accent-gold); font-size: .95rem; 
+  font-weight: 600; font-family: 'Orbitron', monospace;
+}
+
+.scroll-top { 
+  position: fixed; bottom: 2rem; right: 2rem;
+  width: 48px; height: 48px; background: var(--accent-gold); 
+  color: var(--space-deep); border: none; border-radius: 50%; 
+  font-size: 1.4rem; cursor: pointer; z-index: 100; 
+  opacity: 0; pointer-events: none; transition: all .3s; 
+  box-shadow: 0 4px 20px var(--glow-gold); font-weight: 700;
+}
+
+.scroll-top.show { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { transform: translateY(-3px); box-shadow: 0 6px 30px var(--glow-gold); }
+
+.section-divider {
+  display: flex; align-items: center; justify-content: center;
+  margin: 3rem auto; max-width: var(--container-max);
+}
+
+.section-divider::before, .section-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(229, 172, 82, 0.3), transparent);
+  max-width: 300px;
+}
+
+.section-divider span {
+  padding: 0 1.5rem; font-family: 'Orbitron', monospace;
+  font-size: 0.85rem; letter-spacing: 4px;
+  color: var(--accent-gold); font-weight: 700;
+}
+
+.info-placeholder {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 1.5rem; text-align: center;
+  gap: 0.8rem; min-height: 120px;
+}
+
+.info-placeholder-icon {
+  font-size: 3rem; opacity: 0.5;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px var(--accent-gold));
+}
+
+.info-placeholder-title {
+  color: var(--text-main); font-family: 'Orbitron', monospace;
+  font-size: 1rem; letter-spacing: 2px; font-weight: 600;
+}
+
+.info-placeholder-hint {
+  color: var(--accent-gold); font-family: 'Orbitron', monospace;
+  font-size: 0.75rem; letter-spacing: 1.5px;
+  text-transform: uppercase; opacity: 0.7;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

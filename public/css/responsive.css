@@ -1,0 +1,44 @@
+/* ═══════════════════════════════════════════════════
+   ОБЩИЕ МЕДИА-ЗАПРОСЫ
+   ═══════════════════════════════════════════════════ */
+
+@media (min-width: 1400px) {
+  .hero-title { letter-spacing: 12px; }
+  .planets-grid { grid-template-columns: repeat(4, 1fr); }
+  .facts-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 1399px) and (min-width: 1025px) {
+  .planets-grid { grid-template-columns: repeat(3, 1fr); }
+  .facts-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .planets-grid { grid-template-columns: repeat(2, 1fr); }
+  .facts-grid { grid-template-columns: repeat(2, 1fr); }
+  .bh-grid { grid-template-columns: repeat(2, 1fr); }
+  .sat-grid { grid-template-columns: repeat(2, 1fr); }
+  .galaxies-grid { grid-template-columns: repeat(2, 1fr); }
+  .games-grid { grid-template-columns: 1fr; }
+  #solar-canvas-wrap { min-height: 500px; }
+  #sat-canvas-wrap { min-height: 500px; }
+  .map-wrap { margin: 0 -0.5rem; }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --container-max: 1600px;
+    --pad-section: 8rem;
+  }
+  body { font-size: 18px; }
+  .hero-title { font-size: 7rem; letter-spacing: 12px; }
+  #solar-canvas-wrap { min-height: 750px; }
+  #sat-canvas-wrap { min-height: 750px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,167 @@
+#planets3d-section {
+  background: radial-gradient(ellipse at center, #262A38 0%, #1B1D27 70%);
+  min-height: 80vh;
+}
+
+.planet3d-container {
+  max-width: 1400px; margin: 0 auto;
+  display: grid; grid-template-columns: 320px 1fr;
+  gap: 1.5rem; align-items: stretch;
+}
+
+.planet3d-sidebar {
+  background: var(--space-card);
+  border: 1px solid rgba(229,172,82,.2);
+  border-radius: 16px; padding: 1.5rem;
+  display: flex; flex-direction: column;
+  gap: 1rem; max-height: 80vh; overflow-y: auto;
+}
+
+.sidebar-title {
+  font-family: 'Orbitron', monospace; font-size: 0.85rem;
+  letter-spacing: 2px; color: var(--accent-gold);
+  text-transform: uppercase; font-weight: 700;
+  margin: 0; padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(229,172,82,.2);
+}
+
+.planet3d-list { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.planet3d-item {
+  display: flex; align-items: center; gap: 0.8rem;
+  padding: 0.7rem 1rem; background: rgba(27,29,39,.5);
+  border: 1px solid rgba(229,172,82,.1);
+  border-radius: 10px; cursor: pointer; transition: all 0.25s;
+}
+
+.planet3d-item:hover {
+  background: rgba(229,172,82,.1);
+  border-color: rgba(229,172,82,.4);
+  transform: translateX(4px);
+}
+
+.planet3d-item.active {
+  background: rgba(229,172,82,.15);
+  border-color: var(--accent-gold);
+}
+
+.planet3d-item-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  flex-shrink: 0; box-shadow: inset 0 0 10px rgba(0,0,0,.4);
+}
+
+.planet3d-item-name {
+  font-family: 'Rajdhani', sans-serif; font-size: 1rem;
+  color: var(--text-main); font-weight: 600;
+}
+
+.planet3d-info {
+  background: rgba(27,29,39,.5); border-radius: 12px;
+  padding: 1rem; border-left: 3px solid var(--accent-gold);
+}
+
+.planet3d-info h4 {
+  font-family: 'Orbitron', monospace; font-size: 1.1rem;
+  color: var(--accent-gold); margin: 0 0 0.8rem 0;
+}
+
+.p3d-stats { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.8rem; }
+
+.p3d-stat {
+  display: flex; justify-content: space-between;
+  font-size: 0.85rem; padding: 0.4rem 0.6rem;
+  background: rgba(0,0,0,.2); border-radius: 6px;
+}
+
+.p3d-label {
+  color: var(--text-dim); font-family: 'Orbitron', monospace;
+  font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase;
+}
+
+.p3d-value { color: var(--accent-gold); font-weight: 600; font-size: 0.85rem; }
+
+.p3d-desc { color: var(--text-dim); font-size: 0.88rem; line-height: 1.5; margin: 0; font-style: italic; }
+
+.planet3d-viewer {
+  position: relative; background: var(--space-card);
+  border: 1px solid rgba(229,172,82,.2);
+  border-radius: 16px; overflow: hidden;
+  min-height: 600px; display: flex; flex-direction: column;
+}
+
+.three-container {
+  flex: 1; width: 100%; min-height: 500px;
+  position: relative;
+  background: radial-gradient(ellipse at center, #14151c 0%, #0a0a1a 100%);
+}
+
+.planet3d-controls {
+  display: flex; flex-wrap: wrap; gap: 0.8rem;
+  padding: 1rem; background: rgba(27,29,39,.6);
+  border-top: 1px solid rgba(229,172,82,.15);
+  align-items: center;
+}
+
+.control-group { display: flex; align-items: center; gap: 0.5rem; }
+
+.control-group label {
+  font-family: 'Orbitron', monospace; font-size: 0.65rem;
+  letter-spacing: 1.5px; color: var(--text-dim);
+  text-transform: uppercase; font-weight: 600; white-space: nowrap;
+}
+
+.ctrl-btn {
+  background: rgba(229,172,82,.1);
+  border: 1px solid rgba(229,172,82,.3);
+  color: var(--accent-gold); padding: 0.4rem 0.8rem;
+  border-radius: 6px; cursor: pointer;
+  font-family: 'Orbitron', monospace; font-size: 0.7rem;
+  letter-spacing: 1px; font-weight: 600;
+}
+
+.ctrl-btn:hover { background: rgba(229,172,82,.2); border-color: var(--accent-gold); }
+
+.control-group input[type=range] { accent-color: var(--accent-gold); width: 100px; }
+
+.ctrl-val {
+  color: var(--accent-gold); font-family: 'Orbitron', monospace;
+  font-size: 0.75rem; font-weight: 700; min-width: 35px;
+}
+
+.planet3d-instructions {
+  position: absolute; bottom: 100px; left: 50%;
+  transform: translateX(-50%);
+  background: rgba(27,29,39,.85);
+  border: 1px solid rgba(229,172,82,.2);
+  padding: 0.6rem 1.2rem; border-radius: 30px;
+  color: var(--text-dim); font-size: 0.78rem;
+  white-space: nowrap; backdrop-filter: blur(6px);
+}
+
+@media screen and (max-width: 1024px) {
+  .planet3d-container { grid-template-columns: 1fr !important; }
+  .planet3d-sidebar { max-height: none !important; overflow-y: visible !important; }
+  .planet3d-list { 
+    display: grid !important; 
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+  }
+  .planet3d-item { padding: 0.5rem 0.7rem !important; }
+  .planet3d-info { display: none; }
+  .planet3d-viewer { min-height: 500px; }
+  .three-container { min-height: 450px !important; }
+}
+
+@media screen and (max-width: 768px) {
+  .planet3d-list { grid-template-columns: repeat(3, 1fr) !important; }
+  .planet3d-item { flex-direction: column; text-align: center; padding: 0.4rem !important; }
+  .planet3d-item-icon { width: 32px !important; height: 32px !important; }
+  .planet3d-viewer { min-height: 380px; }
+  .three-container { min-height: 350px !important; }
+  .control-group { flex: 1 1 calc(50% - 0.5rem); }
+}
+
+@media screen and (max-width: 480px) {
+  .planet3d-list { grid-template-columns: repeat(2, 1fr) !important; }
+  .planet3d-viewer { min-height: 320px; }
+  .three-container { min-height: 300px !important; }
+}

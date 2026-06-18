@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Админка — COSMOS</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  body { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+  .admin-section { background: rgba(42,45,58,.8); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid rgba(229,172,82,.2); }
+  .admin-section h2 { color: #E5AC52; font-family: 'Orbitron', monospace; margin-bottom: 1rem; }
+  .admin-form input, .admin-form textarea, .admin-form select { width: 100%; background: var(--space-deep); border: 1px solid var(--accent-gold); color: var(--text-main); padding: .6rem; margin-bottom: .5rem; border-radius: 6px; font-family: inherit; }
+  .admin-form textarea { min-height: 100px; resize: vertical; }
+  .admin-form label { display: block; color: var(--text-dim); font-size: .8rem; margin-bottom: .2rem; letter-spacing: 1px; text-transform: uppercase; }
+  .admin-btn { background: var(--accent-gold); color: var(--space-deep); border: none; padding: .7rem 1.4rem; border-radius: 6px; cursor: pointer; font-family: 'Orbitron', monospace; font-size: .8rem; letter-spacing: 1px; font-weight: 700; }
+  .admin-btn:hover { background: #f5c167; }
+  .admin-btn.danger { background: #EF5350; color: white; }
+  .admin-list { margin-top: 1rem; }
+  .admin-list-item { display: flex; justify-content: space-between; align-items: center; padding: .6rem 1rem; background: rgba(27,29,39,.5); border-radius: 6px; margin-bottom: .4rem; }
+  .admin-login { max-width: 400px; margin: 4rem auto; text-align: center; }
+  #loginSection { display: block; }
+  #adminPanel { display: none; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+  .stat-card { background: rgba(27,29,39,.6); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--accent-gold); }
+  .stat-value { font-family: 'Orbitron', monospace; font-size: 1.5rem; color: var(--accent-gold); font-weight: 700; }
+  .stat-label { font-size: .8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+  .tab-buttons { display: flex; gap: .5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .tab-btn { padding: .6rem 1.2rem; background: transparent; border: 1px solid rgba(229,172,82,.3); color: var(--text-dim); border-radius: 6px; cursor: pointer; font-family: 'Orbitron', monospace; font-size: .8rem; }
+  .tab-btn.active { background: var(--accent-gold); color: var(--space-deep); border-color: var(--accent-gold); }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+</style>
+</head>
+<body>
+<div id="stars-bg"></div>
+
+<h1 style="font-family: 'Orbitron', monospace; color: var(--accent-gold); margin-bottom: 2rem;">🛠️ COSMOS — Админка</h1>
+
+<div id="loginSection" class="admin-login">
+  <div class="admin-section">
+    <h2>🔐 Вход</h2>
+    <input type="password" id="adminPassword" placeholder="Пароль" style="width: 100%; padding: .8rem; background: var(--space-deep); border: 1px solid var(--accent-gold); color: var(--text-main); border-radius: 6px; margin-bottom: 1rem;">
+    <button class="admin-btn" onclick="login()">ВОЙТИ</button>
+    <p style="margin-top: 1rem; color: var(--text-dim); font-size: .85rem;">Пароль по умолчанию: <code>cosmos2024</code></p>
+  </div>
+</div>
+
+<div id="adminPanel">
+  
+  <div class="admin-section">
+    <h2>📊 Статистика БД</h2>
+    <div class="stats-grid" id="statsGrid"></div>
+  </div>
+  
+  <div class="admin-section">
+    <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="planets">🪐 Планеты</button>
+      <button class="tab-btn" data-tab="galaxies">🌌 Галактики</button>
+      <button class="tab-btn" data-tab="facts">📖 Факты</button>
+      <button class="tab-btn" data-tab="blackholes">🕳 Чёрные дыры</button>
+    </div>
+    
+    <div class="tab-pane active" data-pane="planets">
+      <h3>Добавить планету</h3>
+      <form class="admin-form" onsubmit="createPlanet(event)">
+        <label>Название *</label><input name="name" required>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: .5rem;">
+          <div><label>Цвет</label><input name="color" value="#888888"></div>
+          <div><label>Свечение</label><input name="glow" value="#666666"></div>
+        </div>
+        <label>Тип (тег)</label><input name="tag" value="Каменная">
+        <label>Описание</label><textarea name="description"></textarea>
+        <label>Факт</label><textarea name="fact"></textarea>
+        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: .5rem;">
+          <div><label>Диаметр</label><input name="diameter"></div>
+          <div><label>Масса</label><input name="mass"></div>
+          <div><label>Гравитация</label><input name="gravity" type="number" step="0.01" value="9.81"></div>
+        </div>
+        <label><input type="checkbox" name="hasRing"> Есть кольца</label>
+        <button type="submit" class="admin-btn">+ ДОБАВИТЬ</button>
+      </form>
+      
+      <h3 style="margin-top: 2rem;">Список планет</h3>
+      <div class="admin-list" id="planetsList"></div>
+    </div>
+    
+    <div class="tab-pane" data-pane="galaxies">
+      <h3>Добавить галактику</h3>
+      <form class="admin-form" onsubmit="createGalaxy(event)">
+        <label>Название *</label><input name="name" required>
+        <label>Тип</label>
+        <select name="typeKey">
+          <option value="spiral">Спиральная</option>
+          <option value="elliptical">Эллиптическая</option>
+          <option value="irregular">Неправильная</option>
+          <option value="active">Активная</option>
+          <option value="starburst">Звёздная вспышка</option>
+          <option value="ring">Кольцевая</option>
+        </select>
+        <label>Расстояние</label><input name="distance" value="0 св. лет">
+        <label>Диаметр</label><input name="diameter" value="~100 000 св. лет">
+        <label>Описание</label><textarea name="description"></textarea>
+        <button type="submit" class="admin-btn">+ ДОБАВИТЬ</button>
+      </form>
+      
+      <h3 style="margin-top: 2rem;">Список галактик</h3>
+      <div class="admin-list" id="galaxiesList"></div>
+    </div>
+    
+    <div class="tab-pane" data-pane="facts">
+      <h3>Добавить факт</h3>
+      <form class="admin-form" onsubmit="createFact(event)">
+        <label>Номер (например 09)</label><input name="n" value="09">
+        <label>Заголовок *</label><input name="title" required>
+        <label>Краткий текст</label><textarea name="text"></textarea>
+        <label>Подробности</label><textarea name="details"></textarea>
+        <button type="submit" class="admin-btn">+ ДОБАВИТЬ</button>
+      </form>
+      
+      <h3 style="margin-top: 2rem;">Список фактов</h3>
+      <div class="admin-list" id="factsList"></div>
+    </div>
+    
+    <div class="tab-pane" data-pane="blackholes">
+      <h3>Добавить чёрную дыру</h3>
+      <form class="admin-form" onsubmit="createBlackhole(event)">
+        <label>Заголовок *</label><input name="title" required>
+        <label>Краткий текст</label><textarea name="text"></textarea>
+        <label>Подробности</label><textarea name="details"></textarea>
+        <label>URL картинки</label><input name="img" value="./images/blackholes/">
+        <button type="submit" class="admin-btn">+ ДОБАВИТЬ</button>
+      </form>
+      
+      <h3 style="margin-top: 2rem;">Список чёрных дыр</h3>
+      <div class="admin-list" id="blackholesList"></div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+async function login() {
+  const password = document.getElementById('adminPassword').value;
+  const result = await window.CosmosAPI.adminLogin(password);
+  if (result.token) {
+    document.getElementById('loginSection').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    await loadStats();
+    await loadAll();
+  } else {
+    alert('Неверный пароль!');
+  }
+}
+
+if (window.CosmosAPI.isAdmin()) {
+  document.getElementById('loginSection').style.display = 'none';
+  document.getElementById('adminPanel').style.display = 'block';
+  setTimeout(async () => {
+    await loadStats();
+    await loadAll();
+  }, 500);
+}
+
+async function loadStats() {
+  const stats = await window.CosmosAPI.adminStats();
+  const grid = document.getElementById('statsGrid');
+  grid.innerHTML = Object.entries(stats).map(([key, val]) => `
+    <div class="stat-card">
+      <div class="stat-value">${val}</div>
+      <div class="stat-label">${key}</div>
+    </div>
+  `).join('');
+}
+
+async function loadAll() {
+  const planets = await window.CosmosAPI.getPlanets();
+  document.getElementById('planetsList').innerHTML = planets.map(p => `
+    <div class="admin-list-item">
+      <span>${p.name} <small style="color:var(--text-dim)">(${p.tag || p.type})</small></span>
+      <button class="admin-btn danger" onclick="deletePlanet('${p.name}')">Удалить</button>
+    </div>
+  `).join('');
+  
+  const galaxies = await window.CosmosAPI.getGalaxies();
+  document.getElementById('galaxiesList').innerHTML = galaxies.map(g => `
+    <div class="admin-list-item">
+      <span>${g.name} <small style="color:var(--text-dim)">(${g.type})</small></span>
+      <button class="admin-btn danger" onclick="deleteGalaxy('${g.name}')">Удалить</button>
+    </div>
+  `).join('');
+  
+  const facts = await window.CosmosAPI.getFacts();
+  document.getElementById('factsList').innerHTML = facts.map(f => `
+    <div class="admin-list-item">
+      <span>${f.n} — ${f.title}</span>
+      <button class="admin-btn danger" onclick="deleteFact('${f.n}')">Удалить</button>
+    </div>
+  `).join('');
+  
+  const bh = await window.CosmosAPI.getBlackHoles();
+  document.getElementById('blackholesList').innerHTML = bh.blackholes.map(b => `
+    <div class="admin-list-item">
+      <span>${b.title}</span>
+      <button class="admin-btn danger" onclick="deleteBlackhole('${b.title}')">Удалить</button>
+    </div>
+  `).join('');
+}
+
+async function createPlanet(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form));
+  data.gravity = parseFloat(data.gravity);
+  data.hasRing = form.hasRing.checked;
+  const result = await window.CosmosAPI.adminCreatePlanet(data);
+  if (result.ok) { alert('✅ Планета добавлена!'); form.reset(); await loadAll(); await loadStats(); }
+  else alert('❌ Ошибка: ' + (result.error || 'неизвестно'));
+}
+
+async function createGalaxy(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form));
+  const result = await window.CosmosAPI.adminCreateGalaxy(data);
+  if (result.ok) { alert('✅ Галактика добавлена!'); form.reset(); await loadAll(); }
+  else alert('❌ Ошибка: ' + (result.error || 'неизвестно'));
+}
+
+async function createFact(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form));
+  const result = await window.CosmosAPI.adminCreateFact(data);
+  if (result.ok) { alert('✅ Факт добавлен!'); form.reset(); await loadAll(); }
+  else alert('❌ Ошибка: ' + (result.error || 'неизвестно'));
+}
+
+async function createBlackhole(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form));
+  const result = await window.CosmosAPI.adminCreateBlackhole(data);
+  if (result.ok) { alert('✅ Чёрная дыра добавлена!'); form.reset(); await loadAll(); }
+  else alert('❌ Ошибка: ' + (result.error || 'неизвестно'));
+}
+
+async function deletePlanet(name) {
+  if (!confirm(`Удалить планету "${name}"?`)) return;
+  const result = await window.CosmosAPI.adminDeletePlanet(name);
+  if (result.ok) { await loadAll(); await loadStats(); }
+}
+
+async function deleteGalaxy(name) {
+  if (!confirm(`Удалить галактику "${name}"?`)) return;
+  const result = await window.CosmosAPI.adminDeleteGalaxy(name);
+  if (result.ok) await loadAll();
+}
+
+async function deleteFact(n) {
+  if (!confirm(`Удалить факт ${n}?`)) return;
+  const result = await window.CosmosAPI.adminDeleteFact(n);
+  if (result.ok) await loadAll();
+}
+
+async function deleteBlackhole(title) {
+  if (!confirm(`Удалить "${title}"?`)) return;
+  const result = await window.CosmosAPI.adminDeleteBlackhole(title);
+  if (result.ok) await loadAll();
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelector(`[data-pane="${btn.dataset.tab}"]`).classList.add('active');
+  });
+});
+</script>
+
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
